@@ -1,13 +1,18 @@
+import os
 products = []
 
 # 讀取檔案的程式
-with open ('products.csv', 'r') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-	print(products)
+if os.path.isfile('products.csv'):# 檢查檔案在不在
+	print('電腦:我有找到檔案喔!')
+	with open ('products.csv', 'r') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+		print(products)
+else:
+	print('電腦:阿喔!找不到檔案呢!趕快輸入商品和價格來建立一個吧!')
 
 # 能讓使用者輸入的程式
 while True:
